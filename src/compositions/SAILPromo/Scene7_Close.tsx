@@ -8,7 +8,7 @@ import {
 import React from "react";
 import { serifFont, sansFont } from "./shared/AnimatedText";
 import { PulseHeartbeat } from "./shared/PulseHeartbeat";
-import { COLORS, TYPE_SCALE, EASE_SMOOTH } from "./shared/constants";
+import { COLORS, TYPE_SCALE, TYPE_SCALE_HORIZONTAL, EASE_SMOOTH } from "./shared/constants";
 
 type Scene7CloseProps = {
   school: {
@@ -24,13 +24,16 @@ type Scene7CloseProps = {
   thesis: {
     promise: string;
   };
+  horizontal?: boolean;
 };
 
 export const Scene7Close: React.FC<Scene7CloseProps> = ({
   school,
   framework,
   thesis,
+  horizontal = false,
 }) => {
+  const typeScale = horizontal ? TYPE_SCALE_HORIZONTAL : TYPE_SCALE;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -119,7 +122,7 @@ export const Scene7Close: React.FC<Scene7CloseProps> = ({
           <div
             style={{
               fontFamily: serifFont,
-              fontSize: TYPE_SCALE.headline,
+              fontSize: typeScale.headline,
               fontWeight: 400,
               color: COLORS.textPrimary,
               textAlign: "center",
@@ -152,7 +155,7 @@ export const Scene7Close: React.FC<Scene7CloseProps> = ({
             <div
               style={{
                 fontFamily: serifFont,
-                fontSize: TYPE_SCALE.subtitle,
+                fontSize: typeScale.subtitle,
                 fontWeight: 600,
                 color: COLORS.textPrimary,
               }}
@@ -162,7 +165,7 @@ export const Scene7Close: React.FC<Scene7CloseProps> = ({
             <div
               style={{
                 fontFamily: serifFont,
-                fontSize: TYPE_SCALE.body,
+                fontSize: typeScale.body,
                 fontWeight: 400,
                 color: COLORS.textMuted,
                 marginTop: 8,
@@ -176,7 +179,7 @@ export const Scene7Close: React.FC<Scene7CloseProps> = ({
           <div
             style={{
               fontFamily: sansFont,
-              fontSize: TYPE_SCALE.caption,
+              fontSize: typeScale.caption,
               fontWeight: 600,
               color: COLORS.suffolkGold,
               letterSpacing: 3,
@@ -202,7 +205,7 @@ export const Scene7Close: React.FC<Scene7CloseProps> = ({
                 key={accolade}
                 style={{
                   fontFamily: sansFont,
-                  fontSize: TYPE_SCALE.micro,
+                  fontSize: typeScale.micro,
                   color: COLORS.textDim,
                   textAlign: "center",
                 }}
@@ -241,7 +244,7 @@ export const Scene7Close: React.FC<Scene7CloseProps> = ({
             <div
               style={{
                 fontFamily: serifFont,
-                fontSize: TYPE_SCALE.subtitle,
+                fontSize: typeScale.subtitle,
                 fontWeight: 300,
                 color: COLORS.textMuted,
                 textAlign: "center",
@@ -263,7 +266,7 @@ export const Scene7Close: React.FC<Scene7CloseProps> = ({
             <div
               style={{
                 fontFamily: serifFont,
-                fontSize: TYPE_SCALE.headline,
+                fontSize: typeScale.headline,
                 fontWeight: 400,
                 color: COLORS.textPrimary,
                 textAlign: "center",
@@ -295,7 +298,7 @@ export const Scene7Close: React.FC<Scene7CloseProps> = ({
           <div
             style={{
               fontFamily: sansFont,
-              fontSize: TYPE_SCALE.body,
+              fontSize: typeScale.body,
               fontWeight: 500,
               color: COLORS.textMuted,
               letterSpacing: 1,

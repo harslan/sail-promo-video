@@ -7,7 +7,7 @@ import {
 } from "remotion";
 import React from "react";
 import { serifFont, sansFont } from "./shared/AnimatedText";
-import { COLORS, TYPE_SCALE, EASE_SMOOTH } from "./shared/constants";
+import { COLORS, TYPE_SCALE, TYPE_SCALE_HORIZONTAL, EASE_SMOOTH } from "./shared/constants";
 
 type Quote = {
   text: string;
@@ -16,9 +16,11 @@ type Quote = {
 
 type Scene5VoicesProps = {
   quotes: Quote[];
+  horizontal?: boolean;
 };
 
-export const Scene5Voices: React.FC<Scene5VoicesProps> = ({ quotes }) => {
+export const Scene5Voices: React.FC<Scene5VoicesProps> = ({ quotes, horizontal = false }) => {
+  const typeScale = horizontal ? TYPE_SCALE_HORIZONTAL : TYPE_SCALE;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -118,7 +120,7 @@ export const Scene5Voices: React.FC<Scene5VoicesProps> = ({ quotes }) => {
           <div
             style={{
               fontFamily: serifFont,
-              fontSize: TYPE_SCALE.body,
+              fontSize: typeScale.body,
               fontWeight: 300,
               fontStyle: "italic",
               color: COLORS.textMuted,
@@ -133,7 +135,7 @@ export const Scene5Voices: React.FC<Scene5VoicesProps> = ({ quotes }) => {
           <div
             style={{
               fontFamily: sansFont,
-              fontSize: TYPE_SCALE.micro,
+              fontSize: typeScale.micro,
               color: COLORS.textDim,
               fontWeight: 500,
             }}
@@ -175,7 +177,7 @@ export const Scene5Voices: React.FC<Scene5VoicesProps> = ({ quotes }) => {
           <div
             style={{
               fontFamily: serifFont,
-              fontSize: TYPE_SCALE.subtitle,
+              fontSize: typeScale.subtitle,
               fontWeight: 300,
               fontStyle: "italic",
               color: COLORS.textMuted,
@@ -199,7 +201,7 @@ export const Scene5Voices: React.FC<Scene5VoicesProps> = ({ quotes }) => {
           <div
             style={{
               fontFamily: serifFont,
-              fontSize: TYPE_SCALE.headline,
+              fontSize: typeScale.headline,
               fontWeight: 400,
               color: COLORS.textPrimary,
               textAlign: "center",
@@ -235,7 +237,7 @@ export const Scene5Voices: React.FC<Scene5VoicesProps> = ({ quotes }) => {
           <div
             style={{
               fontFamily: sansFont,
-              fontSize: TYPE_SCALE.caption,
+              fontSize: typeScale.caption,
               color: COLORS.textMuted,
               fontWeight: 500,
               marginTop: 30,

@@ -7,9 +7,14 @@ import {
 } from "remotion";
 import React from "react";
 import { serifFont } from "./shared/AnimatedText";
-import { COLORS, TYPE_SCALE, EASE_SMOOTH } from "./shared/constants";
+import { COLORS, TYPE_SCALE, TYPE_SCALE_HORIZONTAL, EASE_SMOOTH } from "./shared/constants";
 
-export const Scene1Tension: React.FC = () => {
+type Scene1TensionProps = {
+  horizontal?: boolean;
+};
+
+export const Scene1Tension: React.FC<Scene1TensionProps> = ({ horizontal = false }) => {
+  const typeScale = horizontal ? TYPE_SCALE_HORIZONTAL : TYPE_SCALE;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -120,7 +125,7 @@ export const Scene1Tension: React.FC = () => {
         <div
           style={{
             fontFamily: serifFont,
-            fontSize: TYPE_SCALE.headline,
+            fontSize: typeScale.headline,
             fontWeight: 400,
             color: COLORS.textPrimary,
             opacity: line1 * previousLinesFade,
@@ -134,7 +139,7 @@ export const Scene1Tension: React.FC = () => {
         <div
           style={{
             fontFamily: serifFont,
-            fontSize: TYPE_SCALE.subtitle,
+            fontSize: typeScale.subtitle,
             fontWeight: 300,
             color: COLORS.textMuted,
             opacity: line2 * previousLinesFade,
@@ -150,7 +155,7 @@ export const Scene1Tension: React.FC = () => {
         <div
           style={{
             fontFamily: serifFont,
-            fontSize: TYPE_SCALE.headline,
+            fontSize: typeScale.headline,
             fontWeight: 400,
             color: COLORS.textPrimary,
             opacity: line3a * previousLinesFade,
@@ -165,7 +170,7 @@ export const Scene1Tension: React.FC = () => {
         <div
           style={{
             fontFamily: serifFont,
-            fontSize: TYPE_SCALE.headline * 1.1,
+            fontSize: typeScale.headline * 1.1,
             fontWeight: 600,
             color: COLORS.textPrimary,
             opacity: line3b * previousLinesFade,
@@ -181,7 +186,7 @@ export const Scene1Tension: React.FC = () => {
         <div
           style={{
             fontFamily: serifFont,
-            fontSize: TYPE_SCALE.title,
+            fontSize: typeScale.title,
             fontWeight: 600,
             color: COLORS.suffolkGold,
             opacity: line4,

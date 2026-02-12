@@ -11,6 +11,7 @@ import { serifFont, sansFont } from "./shared/AnimatedText";
 import {
   COLORS,
   TYPE_SCALE,
+  TYPE_SCALE_HORIZONTAL,
   EASE_SMOOTH,
   SPRING_ORGANIC,
 } from "./shared/constants";
@@ -27,11 +28,15 @@ type Scene3FrameworkProps = {
     name: string;
     pillars: Pillar[];
   };
+  horizontal?: boolean;
 };
 
 export const Scene3Framework: React.FC<Scene3FrameworkProps> = ({
   framework,
+  horizontal = false,
 }) => {
+  // Use appropriate type scale based on orientation
+  const typeScale = horizontal ? TYPE_SCALE_HORIZONTAL : TYPE_SCALE;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -88,7 +93,7 @@ export const Scene3Framework: React.FC<Scene3FrameworkProps> = ({
           <div
             style={{
               fontFamily: serifFont,
-              fontSize: TYPE_SCALE.subtitle,
+              fontSize: typeScale.subtitle,
               color: COLORS.textMuted,
               fontWeight: 300,
             }}
@@ -105,6 +110,7 @@ export const Scene3Framework: React.FC<Scene3FrameworkProps> = ({
           frame={frame - pillarStarts[activePillarIndex]}
           fps={fps}
           isLeadership={activePillarIndex === 3}
+          horizontal={horizontal}
         />
       )}
 
@@ -114,6 +120,7 @@ export const Scene3Framework: React.FC<Scene3FrameworkProps> = ({
           pillars={framework.pillars}
           frame={frame - integrationStart}
           fps={fps}
+          horizontal={horizontal}
         />
       )}
     </AbsoluteFill>
@@ -126,7 +133,10 @@ const PillarReveal: React.FC<{
   frame: number;
   fps: number;
   isLeadership: boolean;
-}> = ({ pillar, frame, fps, isLeadership }) => {
+  horizontal?: boolean;
+}> = ({ pillar, frame, fps, isLeadership, horizontal = false }) => {
+  const typeScale = horizontal ? TYPE_SCALE_HORIZONTAL : TYPE_SCALE;
+  const letterSize = horizontal ? 180 : 200; // Big bold letters for both
   const letterProgress = spring({
     frame,
     fps,
@@ -193,7 +203,7 @@ const PillarReveal: React.FC<{
       <div
         style={{
           fontFamily: serifFont,
-          fontSize: 200,
+          fontSize: letterSize,
           fontWeight: 700,
           color: pillar.color,
           transform: `scale(${letterScale}) translateY(${letterY}px)`,
@@ -211,7 +221,7 @@ const PillarReveal: React.FC<{
       <div
         style={{
           fontFamily: serifFont,
-          fontSize: TYPE_SCALE.title,
+          fontSize: typeScale.title,
           fontWeight: 400,
           color: COLORS.textPrimary,
           opacity: nameProgress,
@@ -225,7 +235,7 @@ const PillarReveal: React.FC<{
       <div
         style={{
           fontFamily: isLeadership ? serifFont : sansFont,
-          fontSize: isLeadership ? TYPE_SCALE.subtitle * 1.1 : TYPE_SCALE.body,
+          fontSize: isLeadership ? typeScale.subtitle * 1.1 : typeScale.body,
           fontWeight: isLeadership ? 600 : 400,
           color: isLeadership ? pillar.color : COLORS.textMuted,
           opacity: questionProgress,
@@ -246,7 +256,10 @@ const IntegrationMoment: React.FC<{
   pillars: Pillar[];
   frame: number;
   fps: number;
-}> = ({ pillars, frame, fps }) => {
+  horizontal?: boolean;
+}> = ({ pillars, frame, fps, horizontal = false }) => {
+  const typeScale = horizontal ? TYPE_SCALE_HORIZONTAL : TYPE_SCALE;
+  const letterSize = horizontal ? 100 : 110; // SAIL letters together - bold
   const assembleProgress = spring({
     frame,
     fps,
@@ -309,7 +322,7 @@ const IntegrationMoment: React.FC<{
               key={pillar.letter}
               style={{
                 fontFamily: serifFont,
-                fontSize: 110,
+                fontSize: letterSize,
                 fontWeight: 700,
                 color: pillar.color,
                 opacity: stagger,
@@ -354,7 +367,7 @@ const IntegrationMoment: React.FC<{
       <div
         style={{
           fontFamily: sansFont,
-          fontSize: TYPE_SCALE.body,
+          fontSize: typeScale.body,
           color: COLORS.textMuted,
           opacity: interpolate(frame, [20, 35], [0, 1], {
             extrapolateLeft: "clamp",

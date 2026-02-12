@@ -8,7 +8,7 @@ import {
 } from "remotion";
 import React from "react";
 import { serifFont, sansFont } from "./shared/AnimatedText";
-import { COLORS, TYPE_SCALE, SPRING_SNAPPY } from "./shared/constants";
+import { COLORS, TYPE_SCALE, TYPE_SCALE_HORIZONTAL, SPRING_SNAPPY } from "./shared/constants";
 
 type Scene4ProofProps = {
   competition: {
@@ -17,9 +17,11 @@ type Scene4ProofProps = {
     dataPoints: string;
     ethicalMoment: string;
   };
+  horizontal?: boolean;
 };
 
-export const Scene4Proof: React.FC<Scene4ProofProps> = ({ competition }) => {
+export const Scene4Proof: React.FC<Scene4ProofProps> = ({ competition, horizontal = false }) => {
+  const typeScale = horizontal ? TYPE_SCALE_HORIZONTAL : TYPE_SCALE;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -78,7 +80,7 @@ export const Scene4Proof: React.FC<Scene4ProofProps> = ({ competition }) => {
           <div
             style={{
               fontFamily: serifFont,
-              fontSize: TYPE_SCALE.subtitle,
+              fontSize: typeScale.subtitle,
               color: COLORS.textPrimary,
               textAlign: "center",
             }}
@@ -95,13 +97,14 @@ export const Scene4Proof: React.FC<Scene4ProofProps> = ({ competition }) => {
           fps={fps}
           competition={competition}
           opacity={statsOpacity}
+          typeScale={typeScale}
         />
       )}
 
       {/* Kinetic sequence */}
       {frame >= statsEnd && frame < kineticEnd && (
         <AbsoluteFill style={{ opacity: kineticOpacity }}>
-          <KineticSequence frame={frame - statsEnd} fps={fps} />
+          <KineticSequence frame={frame - statsEnd} fps={fps} typeScale={typeScale} />
         </AbsoluteFill>
       )}
 
@@ -112,6 +115,7 @@ export const Scene4Proof: React.FC<Scene4ProofProps> = ({ competition }) => {
           fps={fps}
           quote={competition.ethicalMoment}
           opacity={ethicalOpacity}
+          typeScale={typeScale}
         />
       )}
     </AbsoluteFill>
@@ -123,7 +127,8 @@ const StatsSection: React.FC<{
   fps: number;
   competition: Scene4ProofProps["competition"];
   opacity: number;
-}> = ({ frame, fps, competition, opacity }) => {
+  typeScale: typeof TYPE_SCALE;
+}> = ({ frame, fps, competition, opacity, typeScale }) => {
   const stats = [
     {
       text: `${competition.studentCount} students.`,
@@ -157,7 +162,7 @@ const StatsSection: React.FC<{
             key={index}
             style={{
               fontFamily: serifFont,
-              fontSize: TYPE_SCALE.headline,
+              fontSize: typeScale.headline,
               fontWeight: 600,
               color: stat.color,
               opacity: progress,
@@ -173,9 +178,10 @@ const StatsSection: React.FC<{
 };
 
 // Kinetic sequence with AUTHENTIC prompts from the AACSB article
-const KineticSequence: React.FC<{ frame: number; fps: number }> = ({
+const KineticSequence: React.FC<{ frame: number; fps: number; typeScale: typeof TYPE_SCALE }> = ({
   frame,
   fps,
+  typeScale,
 }) => {
   // Authentic prompts and insights from the AACSB article
   const prompts = [
@@ -287,7 +293,7 @@ const KineticSequence: React.FC<{ frame: number; fps: number }> = ({
               top: `${prompt.y}%`,
               transform: `translate(-50%, -50%) translateY(${interpolate(progress, [0, 1], [20, 0])}px) scale(${interpolate(progress, [0, 1], [0.85, 1])})`,
               fontFamily: sansFont,
-              fontSize: prompt.highlight ? TYPE_SCALE.body : TYPE_SCALE.caption,
+              fontSize: prompt.highlight ? typeScale.body : typeScale.caption,
               fontWeight: prompt.highlight ? 600 : 400,
               color: prompt.highlight ? COLORS.sailCoral : COLORS.textPrimary,
               opacity: progress * exit,
@@ -333,7 +339,7 @@ const KineticSequence: React.FC<{ frame: number; fps: number }> = ({
               top: `${frag.y}%`,
               transform: `translate(-50%, -50%)`,
               fontFamily: sansFont,
-              fontSize: TYPE_SCALE.subtitle,
+              fontSize: typeScale.subtitle,
               fontWeight: 700,
               color: COLORS.sailTeal,
               opacity: progress * exit * 0.5,
@@ -500,7 +506,8 @@ const EthicalMoment: React.FC<{
   fps: number;
   quote: string;
   opacity: number;
-}> = ({ frame, fps, quote, opacity }) => {
+  typeScale: typeof TYPE_SCALE;
+}> = ({ frame, fps, quote, opacity, typeScale }) => {
   const quoteProgress = spring({
     frame,
     fps,
@@ -544,7 +551,7 @@ const EthicalMoment: React.FC<{
       <div
         style={{
           fontFamily: serifFont,
-          fontSize: TYPE_SCALE.subtitle * 1.1,
+          fontSize: typeScale.subtitle * 1.1,
           color: COLORS.textPrimary,
           textAlign: "center",
           lineHeight: 1.55,
@@ -561,7 +568,7 @@ const EthicalMoment: React.FC<{
       <div
         style={{
           fontFamily: sansFont,
-          fontSize: TYPE_SCALE.body,
+          fontSize: typeScale.body,
           color: COLORS.sailCoral,
           fontWeight: 700,
           letterSpacing: 3,

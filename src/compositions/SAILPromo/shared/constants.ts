@@ -8,6 +8,10 @@ export const VIDEO_HEIGHT = 1920;
 export const VIDEO_FPS = 30;
 export const TOTAL_DURATION_FRAMES = 2790; // 93 seconds (added 3s pause after Scene 2)
 
+// Horizontal version specs
+export const VIDEO_WIDTH_HORIZONTAL = 1920;
+export const VIDEO_HEIGHT_HORIZONTAL = 1080;
+
 // ============================================================================
 // SCENE TIMING (in frames)
 // ============================================================================
@@ -62,6 +66,7 @@ export const PILLAR_COLORS = {
 // ============================================================================
 // TYPOGRAPHY
 // ============================================================================
+// Vertical (1080x1920) - mobile-first
 export const TYPE_SCALE = {
   hero: 132, // "Ownership cannot." - BIGGER for impact
   title: 78, // Scene titles, pillar names
@@ -70,6 +75,18 @@ export const TYPE_SCALE = {
   body: 30, // Body text, descriptions
   caption: 24, // Labels, attributions
   micro: 18, // Tiny labels
+} as const;
+
+// Horizontal (1920x1080) - presentation/web
+// BOLD sizes for cinematic impact - this is a brand film, not a corporate deck
+export const TYPE_SCALE_HORIZONTAL = {
+  hero: 120, // "Ownership cannot." - MUST dominate the screen
+  title: 72, // Scene titles, pillar names - substantial
+  headline: 56, // Major lines in thesis - weight and presence
+  subtitle: 44, // Pillar questions, subheadlines - easily readable
+  body: 32, // Body text, descriptions - no squinting
+  caption: 26, // Labels, attributions - still visible
+  micro: 20, // Tiny labels - readable even small
 } as const;
 
 // ============================================================================
@@ -108,6 +125,14 @@ export const LAYOUT = {
   paddingHorizontal: 80,
   contentWidth: 920, // VIDEO_WIDTH - 2 * paddingHorizontal
   contentHeight: 1680, // VIDEO_HEIGHT - 2 * paddingVertical
+} as const;
+
+// Horizontal layout (1920x1080)
+export const LAYOUT_HORIZONTAL = {
+  paddingVertical: 60,
+  paddingHorizontal: 100,
+  contentWidth: 1720, // VIDEO_WIDTH_HORIZONTAL - 2 * paddingHorizontal
+  contentHeight: 960, // VIDEO_HEIGHT_HORIZONTAL - 2 * paddingVertical
 } as const;
 
 // ============================================================================

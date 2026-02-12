@@ -10,11 +10,17 @@ import { sansFont, serifFont } from "./shared/AnimatedText";
 import {
   COLORS,
   TYPE_SCALE,
+  TYPE_SCALE_HORIZONTAL,
   EASE_SMOOTH,
   SPRING_SMOOTH,
 } from "./shared/constants";
 
-export const Scene2Stakes: React.FC = () => {
+type Scene2StakesProps = {
+  horizontal?: boolean;
+};
+
+export const Scene2Stakes: React.FC<Scene2StakesProps> = ({ horizontal = false }) => {
+  const typeScale = horizontal ? TYPE_SCALE_HORIZONTAL : TYPE_SCALE;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -134,7 +140,7 @@ export const Scene2Stakes: React.FC = () => {
           <div
             style={{
               fontFamily: serifFont,
-              fontSize: TYPE_SCALE.subtitle,
+              fontSize: typeScale.subtitle,
               fontWeight: 400,
               color: COLORS.textPrimary,
               textAlign: "center",
@@ -148,7 +154,7 @@ export const Scene2Stakes: React.FC = () => {
           <div
             style={{
               fontFamily: serifFont,
-              fontSize: TYPE_SCALE.subtitle,
+              fontSize: typeScale.subtitle,
               fontWeight: 400,
               fontStyle: "italic",
               color: COLORS.textMuted,
@@ -251,7 +257,7 @@ export const Scene2Stakes: React.FC = () => {
           <span
             style={{
               fontFamily: sansFont,
-              fontSize: TYPE_SCALE.micro,
+              fontSize: typeScale.micro,
               color: COLORS.textDim,
               fontWeight: 500,
               letterSpacing: 2,
@@ -274,7 +280,7 @@ export const Scene2Stakes: React.FC = () => {
             <div
               style={{
                 fontFamily: serifFont,
-                fontSize: TYPE_SCALE.title, // BIGGER - this question needs weight
+                fontSize: typeScale.title, // BIGGER - this question needs weight
                 fontWeight: 600,
                 color: COLORS.sailCoral,
                 textAlign: "center",
@@ -325,7 +331,7 @@ export const Scene2Stakes: React.FC = () => {
                 top: y,
                 transform: "translate(-50%, -50%)",
                 fontFamily: sansFont,
-                fontSize: TYPE_SCALE.caption,
+                fontSize: typeScale.caption,
                 color: COLORS.textDim,
                 fontStyle: "italic",
                 opacity,

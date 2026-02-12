@@ -9,7 +9,7 @@ import {
 import React from "react";
 import { serifFont } from "./shared/AnimatedText";
 import { ParticleField } from "./shared/ParticleField";
-import { COLORS, TYPE_SCALE } from "./shared/constants";
+import { COLORS, TYPE_SCALE, TYPE_SCALE_HORIZONTAL } from "./shared/constants";
 
 type Scene6ThesisProps = {
   thesis: {
@@ -17,9 +17,11 @@ type Scene6ThesisProps = {
     line2: string;
     line3: string;
   };
+  horizontal?: boolean;
 };
 
-export const Scene6Thesis: React.FC<Scene6ThesisProps> = ({ thesis }) => {
+export const Scene6Thesis: React.FC<Scene6ThesisProps> = ({ thesis, horizontal = false }) => {
+  const typeScale = horizontal ? TYPE_SCALE_HORIZONTAL : TYPE_SCALE;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -242,7 +244,7 @@ export const Scene6Thesis: React.FC<Scene6ThesisProps> = ({ thesis }) => {
         <div
           style={{
             fontFamily: serifFont,
-            fontSize: TYPE_SCALE.headline,
+            fontSize: typeScale.headline,
             fontWeight: 300,
             color: COLORS.textPrimary,
             opacity: line1Progress * line1FadeOut,
@@ -256,7 +258,7 @@ export const Scene6Thesis: React.FC<Scene6ThesisProps> = ({ thesis }) => {
         <div
           style={{
             fontFamily: serifFont,
-            fontSize: TYPE_SCALE.headline * 1.05,
+            fontSize: typeScale.headline * 1.05,
             fontWeight: 400,
             color: COLORS.textPrimary,
             opacity: line2Progress * line2FadeOut,
@@ -270,7 +272,7 @@ export const Scene6Thesis: React.FC<Scene6ThesisProps> = ({ thesis }) => {
         <div
           style={{
             fontFamily: serifFont,
-            fontSize: TYPE_SCALE.hero * 1.1,
+            fontSize: typeScale.hero * 1.1,
             fontWeight: 700,
             color: COLORS.textPrimary,
             opacity: line3Progress,
