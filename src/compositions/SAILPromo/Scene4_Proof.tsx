@@ -25,17 +25,17 @@ export const Scene4Proof: React.FC<Scene4ProofProps> = ({ competition, horizonta
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Scene: 600 frames (20 seconds)
+  // Scene: 660 frames (22 seconds)
   // Opening: 0-90 "We didn't just theorize. We tested it."
   // Stats: 90-180 "34 students. Real-world datasets. Real challenges."
   // Kinetic: 180-420 - RAPID prompts, data viz, energy
-  // Ethical: 420-570 - THE key quote + "unprompted"
-  // Fade: 570-600
+  // Ethical: 420-630 - THE key quote + "unprompted" - EXTENDED to let it land
+  // Fade: 630-660
 
   const openingEnd = 90;
   const statsEnd = 180;
   const kineticEnd = 420;
-  const ethicalEnd = 570;
+  const ethicalEnd = 630;
 
   const openingOpacity = interpolate(
     frame,

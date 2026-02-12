@@ -40,17 +40,17 @@ export const Scene3Framework: React.FC<Scene3FrameworkProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Scene duration: 450 frames (15 seconds)
+  // Scene duration: 525 frames (17.5 seconds)
   // Opening: frames 0-90 (3s): "There's a framework for this."
   // S pillar: frames 90-180 (3s)
   // A pillar: frames 180-270 (3s)
   // I pillar: frames 270-360 (3s)
-  // L pillar: frames 360-405 (1.5s)
-  // Integration: frames 405-450 (1.5s)
+  // L pillar: frames 360-465 (3.5s) - EXTENDED for "I will own what happens"
+  // Integration: frames 465-525 (2s)
 
   const openingEnd = 90;
   const pillarStarts = [90, 180, 270, 360];
-  const integrationStart = 405;
+  const integrationStart = 465;
 
   // Opening text fade
   const openingOpacity = interpolate(

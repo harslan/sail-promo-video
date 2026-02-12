@@ -6,7 +6,7 @@ import { Easing } from "remotion";
 export const VIDEO_WIDTH = 1080;
 export const VIDEO_HEIGHT = 1920;
 export const VIDEO_FPS = 30;
-export const TOTAL_DURATION_FRAMES = 2790; // 93 seconds (added 3s pause after Scene 2)
+export const TOTAL_DURATION_FRAMES = 2940; // 98 seconds (added breathing room)
 
 // Horizontal version specs
 export const VIDEO_WIDTH_HORIZONTAL = 1920;
@@ -15,15 +15,18 @@ export const VIDEO_HEIGHT_HORIZONTAL = 1080;
 // ============================================================================
 // SCENE TIMING (in frames)
 // ============================================================================
-// Added 90 frames (3 seconds) after Scene 2 to let "Who owns that decision now?" breathe
+// Pacing adjustments:
+// - 15 frames (0.5s) beat between Scene 1 and 2
+// - 75 frames (2.5s) added to Scene 3 for Leadership pillar
+// - 60 frames (2s) added to Scene 4 for ethical moment
 export const SCENE_TIMING = {
   scene1: { start: 0, end: 300 }, // 0-10s: The Tension
-  scene2: { start: 300, end: 630 }, // 10-21s: The Stakes (extended for pause)
-  scene3: { start: 630, end: 1080 }, // 21-36s: The Framework
-  scene4: { start: 1080, end: 1680 }, // 36-56s: The Proof
-  scene5: { start: 1680, end: 2040 }, // 56-68s: The Voices
-  scene6: { start: 2040, end: 2340 }, // 68-78s: The Thesis
-  scene7: { start: 2340, end: 2790 }, // 78-93s: The Close
+  scene2: { start: 315, end: 645 }, // 10.5-21.5s: The Stakes (0.5s beat before)
+  scene3: { start: 645, end: 1170 }, // 21.5-39s: The Framework (+2.5s for Leadership)
+  scene4: { start: 1170, end: 1830 }, // 39-61s: The Proof (+2s for ethical moment)
+  scene5: { start: 1830, end: 2190 }, // 61-73s: The Voices
+  scene6: { start: 2190, end: 2490 }, // 73-83s: The Thesis
+  scene7: { start: 2490, end: 2940 }, // 83-98s: The Close
 } as const;
 
 // ============================================================================
