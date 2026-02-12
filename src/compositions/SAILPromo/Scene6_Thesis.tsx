@@ -125,15 +125,7 @@ export const Scene6Thesis: React.FC<Scene6ThesisProps> = ({ thesis, horizontal =
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
-  // Very subtle screen movement on impact
-  const shakeIntensity = interpolate(
-    frame,
-    [impactFrame, impactFrame + 15],
-    [1, 0],
-    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
-  );
-  const shakeX = Math.sin(frame * 1.8) * 1.5 * shakeIntensity;
-  const shakeY = Math.cos(frame * 2.2) * 1 * shakeIntensity;
+  // Shake removed per feedback — cleaner without it
 
   // Glow bloom that builds and sustains
   const glowIntensity = interpolate(
@@ -229,7 +221,7 @@ export const Scene6Thesis: React.FC<Scene6ThesisProps> = ({ thesis, horizontal =
         }}
       />
 
-      {/* Content container with shake */}
+      {/* Content container */}
       <AbsoluteFill
         style={{
           display: "flex",
@@ -237,7 +229,6 @@ export const Scene6Thesis: React.FC<Scene6ThesisProps> = ({ thesis, horizontal =
           alignItems: "center",
           justifyContent: "center",
           gap: 40,
-          transform: `translate(${shakeX}px, ${shakeY}px)`,
         }}
       >
         {/* Line 1: "Skills can be automated." */}
