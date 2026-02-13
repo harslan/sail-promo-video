@@ -29,13 +29,14 @@ export const Scene6Close: React.FC<Scene6Props> = ({ school, brandLine }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Timing
-  const credentialsStart = 30;
-  const schoolNameStart = 60;
-  const locationStart = 90;
-  const accoladesStart = 120;
-  const urlStart = 200;
-  const brandLineStart = 280;
+  // Timing — starts with a breath after the thesis
+  const breathDuration = 40; // 1.3 seconds of near-silence to let thesis sink in
+  const credentialsStart = breathDuration + 20;
+  const schoolNameStart = breathDuration + 50;
+  const locationStart = breathDuration + 80;
+  const accoladesStart = breathDuration + 110;
+  const urlStart = breathDuration + 180;
+  const brandLineStart = breathDuration + 250;
 
   // Animations
   const credentialsProgress = spring({
@@ -77,13 +78,22 @@ export const Scene6Close: React.FC<Scene6Props> = ({ school, brandLine }) => {
     });
   };
 
-  // Fade out (gentle)
-  const sceneOpacity = interpolate(
+  // The breath: fade in from black, then fade out at end
+  const fadeIn = interpolate(
+    frame,
+    [0, breathDuration],
+    [0, 1],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+  );
+
+  const fadeOut = interpolate(
     frame,
     [400, 420],
     [1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
+
+  const sceneOpacity = fadeIn * fadeOut;
 
   return (
     <AbsoluteFill
