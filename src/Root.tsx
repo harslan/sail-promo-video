@@ -13,6 +13,19 @@ import {
   TOTAL_DURATION_FRAMES,
 } from "./compositions/SAILPromo/shared/constants";
 
+// SawyerBrand composition
+import { SawyerBrandVideo } from "./compositions/SawyerBrand";
+import {
+  SawyerBrandSchema,
+  defaultProps as sawyerDefaultProps,
+} from "./compositions/SawyerBrand/schema";
+import {
+  VIDEO_WIDTH as SAWYER_WIDTH,
+  VIDEO_HEIGHT as SAWYER_HEIGHT,
+  VIDEO_FPS as SAWYER_FPS,
+  TOTAL_DURATION_FRAMES as SAWYER_DURATION,
+} from "./compositions/SawyerBrand/shared/constants";
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -39,6 +52,20 @@ export const RemotionRoot: React.FC = () => {
           height={1080}
           schema={SAILPromoSchema}
           defaultProps={defaultProps}
+        />
+      </Folder>
+
+      <Folder name="Sawyer-Brand">
+        {/* Brand video combining IMMERSE + SAIL (16:9) */}
+        <Composition
+          id="SawyerBrandVideo"
+          component={SawyerBrandVideo}
+          durationInFrames={SAWYER_DURATION}
+          fps={SAWYER_FPS}
+          width={SAWYER_WIDTH}
+          height={SAWYER_HEIGHT}
+          schema={SawyerBrandSchema}
+          defaultProps={sawyerDefaultProps}
         />
       </Folder>
     </>
