@@ -44,10 +44,10 @@ export const COLORS = {
   wishBlue: "#29ABE2",
 
   // Text colors — optimized for video readability
-  textPrimary: "#F5F4F8",  // Slightly brighter white
-  textMuted: "#A0A0B8",    // Brighter for better contrast
-  textDim: "#6A6A82",      // More readable
-  textGhost: "#3D3D52",
+  textPrimary: "#F5F4F8",  // Crisp white
+  textMuted: "#B0B0C8",    // Brighter for better contrast
+  textDim: "#8585A0",      // Subdued but readable
+  textGhost: "#4D4D62",
 
   // Glow colors
   glowCoral: "rgba(232, 93, 117, 0.3)",
