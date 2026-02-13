@@ -269,7 +269,7 @@ export const Scene5Thesis: React.FC<Scene5Props> = ({ immerse, sail, thesis }) =
         <div
           style={{
             position: "absolute",
-            bottom: 120,
+            bottom: 60,
             left: 0,
             right: 0,
             display: "flex",
