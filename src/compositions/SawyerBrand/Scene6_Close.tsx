@@ -257,6 +257,39 @@ export const Scene6Close: React.FC<Scene6Props> = ({ school, brandLine }) => {
           }}
         />
       )}
+
+      {/* Heartbeat pulse visual — syncs with audio at the end */}
+      {frame >= 270 && (
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            width: interpolate(
+              frame,
+              [270, 285, 300, 330, 345, 360],
+              [0, 1200, 800, 0, 900, 600],
+              { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+            ),
+            height: interpolate(
+              frame,
+              [270, 285, 300, 330, 345, 360],
+              [0, 1200, 800, 0, 900, 600],
+              { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+            ),
+            borderRadius: "50%",
+            border: `2px solid ${COLORS.suffolkGold}`,
+            opacity: interpolate(
+              frame,
+              [270, 280, 300, 330, 340, 360],
+              [0, 0.3, 0, 0, 0.2, 0],
+              { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+            ),
+            pointerEvents: "none",
+          }}
+        />
+      )}
     </AbsoluteFill>
   );
 };

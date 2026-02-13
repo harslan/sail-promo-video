@@ -25,11 +25,11 @@ export const Scene3Pivot: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Timing — the pivot needs to breathe
+  // Timing — the pivot needs to breathe (thoughtful pause)
   const line1Start = 15;
-  const line1End = 90;
-  const line2Start = 105; // 15 frame pause after line 1 fades
-  const fadeOut = 195;
+  const line1End = 85;
+  const line2Start = 110; // 25 frame pause (0.8s) — let it land
+  const fadeOut = 200;
 
   // Line 1: "But experience without a framework is just activity."
   const line1Progress = spring({

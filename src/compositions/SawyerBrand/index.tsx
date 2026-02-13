@@ -8,6 +8,7 @@ import { Scene3Pivot } from "./Scene3_Pivot";
 import { Scene4Integration } from "./Scene4_Integration";
 import { Scene5Thesis } from "./Scene5_Thesis";
 import { Scene6Close } from "./Scene6_Close";
+import { AudioDesign } from "./audio/AudioDesign";
 
 /**
  * SawyerBrandVideo - "Where Ownership Is Built"
@@ -24,6 +25,8 @@ export const SawyerBrandVideo: React.FC<SawyerBrandProps> = (props) => {
         backgroundColor: COLORS.bgDeep,
       }}
     >
+      {/* Cinematic Audio Design */}
+      <AudioDesign enabled={true} />
       {/* Scene 1: The Generic Claim (0-7s) */}
       <Sequence
         from={scene1.start}

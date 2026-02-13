@@ -28,10 +28,11 @@ export const Scene4Integration: React.FC<Scene4Props> = ({ sail }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Timing
+  // Timing — Leadership pillar gets more time (it's the climax)
   const openingEnd = 90; // 3 seconds for SAIL intro
-  const pillarDuration = 90; // 3 seconds each
-  const pillarStarts = [90, 180, 270, 360];
+  const pillarDuration = 85; // 2.8 seconds for S, A, I
+  const leadershipDuration = 110; // 3.7 seconds for L — the ownership moment
+  const pillarStarts = [90, 175, 260, 345]; // Adjusted for variable duration
 
   // Opening: SAIL letters + award
   const openingOpacity = interpolate(
@@ -41,7 +42,7 @@ export const Scene4Integration: React.FC<Scene4Props> = ({ sail }) => {
     { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: EASE_SMOOTH }
   );
 
-  // Which pillar is active
+  // Which pillar is active (Leadership gets more time)
   const activePillarIndex =
     frame < pillarStarts[0]
       ? -1
@@ -51,7 +52,7 @@ export const Scene4Integration: React.FC<Scene4Props> = ({ sail }) => {
           ? 1
           : frame < pillarStarts[3]
             ? 2
-            : frame < pillarStarts[3] + pillarDuration
+            : frame < pillarStarts[3] + leadershipDuration
               ? 3
               : -1;
 
@@ -154,6 +155,7 @@ export const Scene4Integration: React.FC<Scene4Props> = ({ sail }) => {
           fps={fps}
           isLeadership={activePillarIndex === 3}
           isInquiry={activePillarIndex === 2}
+          duration={activePillarIndex === 3 ? leadershipDuration : pillarDuration}
         />
       )}
     </AbsoluteFill>
@@ -167,7 +169,8 @@ const PillarMapping: React.FC<{
   fps: number;
   isLeadership: boolean;
   isInquiry: boolean;
-}> = ({ pillar, frame, fps, isLeadership, isInquiry }) => {
+  duration: number;
+}> = ({ pillar, frame, fps, isLeadership, isInquiry, duration }) => {
   // Entrance animation
   const enterProgress = spring({
     frame,
@@ -213,8 +216,8 @@ const PillarMapping: React.FC<{
     config: { damping: 12, stiffness: 100 },
   });
 
-  // Exit fade — pushed later to let key moments breathe
-  const exitOpacity = interpolate(frame, [78, 90], [1, 0], {
+  // Exit fade — uses duration to let Leadership breathe longer
+  const exitOpacity = interpolate(frame, [duration - 12, duration], [1, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });

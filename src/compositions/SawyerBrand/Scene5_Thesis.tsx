@@ -38,7 +38,7 @@ export const Scene5Thesis: React.FC<Scene5Props> = ({ immerse, sail, thesis }) =
   const line1Start = beat2Start + 5; // "Skills can be automated."
   const line2Start = line1Start + 45; // 1.5s to let line 1 land
   const line3Start = line2Start + 45; // 1.5s to let line 2 land
-  const closerStart = line3Start + 55; // 1.8s — "Ownership cannot." needs to breathe
+  const closerStart = line3Start + 65; // 2.2s — "Ownership cannot." is THE moment
 
   // Beat 1: Two frameworks side by side
   const immerseProgress = spring({
@@ -371,7 +371,7 @@ export const Scene5Thesis: React.FC<Scene5Props> = ({ immerse, sail, thesis }) =
         </AbsoluteFill>
       )}
 
-      {/* Subtle glow behind thesis */}
+      {/* Subtle glow behind thesis — pulses when "Ownership" lands */}
       {frame >= line3Start && (
         <div
           style={{
@@ -379,14 +379,26 @@ export const Scene5Thesis: React.FC<Scene5Props> = ({ immerse, sail, thesis }) =
             left: "50%",
             top: "50%",
             transform: "translate(-50%, -50%)",
-            width: 600,
-            height: 400,
+            width: interpolate(
+              frame - line3Start,
+              [0, 5, 20, 40],
+              [400, 800, 600, 600],
+              { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+            ),
+            height: interpolate(
+              frame - line3Start,
+              [0, 5, 20, 40],
+              [300, 600, 400, 400],
+              { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+            ),
             borderRadius: "50%",
-            background: `radial-gradient(circle, ${COLORS.suffolkGold}15 0%, transparent 70%)`,
-            opacity: interpolate(frame - line3Start, [0, 30], [0, 0.8], {
-              extrapolateLeft: "clamp",
-              extrapolateRight: "clamp",
-            }),
+            background: `radial-gradient(circle, ${COLORS.suffolkGold}20 0%, transparent 70%)`,
+            opacity: interpolate(
+              frame - line3Start,
+              [0, 5, 15, 40],
+              [0, 1, 0.9, 0.8],
+              { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+            ),
             pointerEvents: "none",
           }}
         />

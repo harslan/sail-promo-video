@@ -30,8 +30,8 @@ export const Scene2Immerse: React.FC<Scene2Props> = ({ immerse }) => {
   const { fps } = useVideoConfig();
 
   // Timing
-  const openingEnd = 90; // 3 seconds
-  const montageStart = 90;
+  const openingEnd = 105; // 3.5 seconds — let opening breathe
+  const montageStart = 105;
   const montageEnd = 540; // 18 seconds of montage
   const assemblyStart = 540;
   const assemblyEnd = 630;
@@ -45,7 +45,7 @@ export const Scene2Immerse: React.FC<Scene2Props> = ({ immerse }) => {
   );
 
   // Calculate which experience card is active
-  const cardDuration = 65; // ~2.2 seconds per card
+  const cardDuration = 75; // ~2.5 seconds per card — let descriptions breathe
   const cardOverlap = 15;
   const effectiveCardDuration = cardDuration - cardOverlap;
 
