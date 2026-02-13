@@ -337,17 +337,18 @@ export const Scene5Thesis: React.FC<Scene5Props> = ({ immerse, sail, thesis }) =
             {thesis.line2}
           </div>
 
-          {/* Line 3: Ownership cannot */}
+          {/* Line 3: Ownership cannot — THE MOMENT */}
           <div
             style={{
               fontFamily: serifFont,
-              fontSize: TYPE_SCALE.headline,
+              fontSize: TYPE_SCALE.climax,
               fontWeight: 600,
               color: COLORS.textPrimary,
               textAlign: "center",
               opacity: line3Opacity,
-              transform: `translateY(${interpolate(line3Progress, [0, 1], [25, 0])}px) scale(${interpolate(line3Progress, [0, 1], [0.95, 1])})`,
-              textShadow: `0 0 40px ${COLORS.suffolkGold}30`,
+              transform: `translateY(${interpolate(line3Progress, [0, 1], [30, 0])}px) scale(${interpolate(line3Progress, [0, 1], [0.92, 1])})`,
+              textShadow: `0 0 60px ${COLORS.suffolkGold}40`,
+              letterSpacing: 2,
             }}
           >
             {thesis.line3}

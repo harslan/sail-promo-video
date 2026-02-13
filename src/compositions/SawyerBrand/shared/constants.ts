@@ -43,11 +43,11 @@ export const COLORS = {
   patriotsBlue: "#002244",
   wishBlue: "#29ABE2",
 
-  // Text colors
-  textPrimary: "#F0EFF4",
-  textMuted: "#8888A0",
-  textDim: "#555570",
-  textGhost: "#333348",
+  // Text colors — optimized for video readability
+  textPrimary: "#F5F4F8",  // Slightly brighter white
+  textMuted: "#A0A0B8",    // Brighter for better contrast
+  textDim: "#6A6A82",      // More readable
+  textGhost: "#3D3D52",
 
   // Glow colors
   glowCoral: "rgba(232, 93, 117, 0.3)",
@@ -56,16 +56,17 @@ export const COLORS = {
 } as const;
 
 // ============================================================================
-// TYPOGRAPHY (16:9 horizontal - larger for widescreen)
+// TYPOGRAPHY (16:9 horizontal - optimized for video impact)
 // ============================================================================
 export const TYPE_SCALE = {
-  hero: 96,       // "Ownership cannot."
+  hero: 96,       // Reserved for absolute biggest moments
+  climax: 72,     // "Ownership cannot." — THE moment
   title: 64,      // Framework names, major headlines
   headline: 48,   // Scene text, pillar names
-  subtitle: 36,   // Questions, subheadlines
+  subtitle: 40,   // Thesis lines, questions (was 36)
   body: 28,       // Body text, descriptions
-  caption: 22,    // Labels, badges
-  micro: 16,      // Tiny labels
+  caption: 26,    // Labels, badges — more readable (was 22)
+  micro: 18,      // Tiny labels (was 16)
 } as const;
 
 // ============================================================================

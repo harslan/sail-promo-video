@@ -219,18 +219,20 @@ export const Scene6Close: React.FC<Scene6Props> = ({ school, brandLine }) => {
           {school.url}
         </div>
 
-        {/* Brand line */}
+        {/* Brand line — the final statement */}
         <div
           style={{
             fontFamily: serifFont,
-            fontSize: TYPE_SCALE.headline,
+            fontSize: TYPE_SCALE.title,
             fontWeight: 500,
             fontStyle: "italic",
             color: COLORS.textPrimary,
             textAlign: "center",
-            marginTop: 40,
+            marginTop: 50,
             opacity: brandLineProgress,
-            transform: `translateY(${interpolate(brandLineProgress, [0, 1], [30, 0])}px) scale(${interpolate(brandLineProgress, [0, 1], [0.95, 1])})`,
+            transform: `translateY(${interpolate(brandLineProgress, [0, 1], [35, 0])}px) scale(${interpolate(brandLineProgress, [0, 1], [0.93, 1])})`,
+            textShadow: `0 0 40px ${COLORS.suffolkGold}25`,
+            letterSpacing: 1,
           }}
         >
           {brandLine}
