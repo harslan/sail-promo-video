@@ -33,12 +33,12 @@ export const Scene5Thesis: React.FC<Scene5Props> = ({ immerse, sail, thesis }) =
   const { fps } = useVideoConfig();
 
   // Timing — the thesis is the climax. Each beat must land.
-  const beat1End = 110; // 3.7 seconds for frameworks side by side
-  const beat2Start = 120; // Clean break — frameworks gone, then thesis begins
+  const beat1End = 90; // 3.0 seconds for frameworks side by side
+  const beat2Start = 100; // Clean break — frameworks gone, then thesis begins
   const line1Start = beat2Start + 5; // "Skills can be automated."
   const line2Start = line1Start + 45; // 1.5s to let line 1 land
   const line3Start = line2Start + 45; // 1.5s to let line 2 land
-  const closerStart = line3Start + 65; // 2.2s — "Ownership cannot." is THE moment
+  const closerStart = line3Start + 55; // 1.8s for "Ownership cannot." — then the closer lands
 
   // Beat 1: Two frameworks side by side
   const immerseProgress = spring({
@@ -92,10 +92,10 @@ export const Scene5Thesis: React.FC<Scene5Props> = ({ immerse, sail, thesis }) =
     config: { damping: 200 },
   });
 
-  // Scene fade out
+  // Scene fade out — delayed to give closer time to breathe
   const sceneOpacity = interpolate(
     frame,
-    [285, 300],
+    [290, 300],
     [1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
@@ -135,6 +135,7 @@ export const Scene5Thesis: React.FC<Scene5Props> = ({ immerse, sail, thesis }) =
         <AbsoluteFill
           style={{
             display: "flex",
+            flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
             gap: 120,
@@ -201,8 +202,8 @@ export const Scene5Thesis: React.FC<Scene5Props> = ({ immerse, sail, thesis }) =
             style={{
               width: 2,
               height: 150,
-              backgroundColor: COLORS.textDim,
-              opacity: Math.min(immerseProgress, sailProgress) * 0.5,
+              backgroundColor: COLORS.textMuted,
+              opacity: Math.min(immerseProgress, sailProgress) * 0.7,
             }}
           />
 

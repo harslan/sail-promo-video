@@ -112,15 +112,16 @@ export const Scene6Close: React.FC<Scene6Props> = ({ school, brandLine }) => {
         }}
       />
 
-      {/* Main content */}
+      {/* Main content — positioned higher to leave room for brand line */}
       <AbsoluteFill
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: 30,
+          gap: 24,
           padding: "0 100px",
+          paddingBottom: 180,
         }}
       >
         {/* School name */}
@@ -229,7 +230,19 @@ export const Scene6Close: React.FC<Scene6Props> = ({ school, brandLine }) => {
           {school.url}
         </div>
 
-        {/* Brand line — the final statement */}
+      </AbsoluteFill>
+
+      {/* Brand line — the final statement, positioned with intentional breathing room */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 100,
+          left: 0,
+          right: 0,
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <div
           style={{
             fontFamily: serifFont,
@@ -238,7 +251,6 @@ export const Scene6Close: React.FC<Scene6Props> = ({ school, brandLine }) => {
             fontStyle: "italic",
             color: COLORS.textPrimary,
             textAlign: "center",
-            marginTop: 50,
             opacity: brandLineProgress,
             transform: `translateY(${interpolate(brandLineProgress, [0, 1], [35, 0])}px) scale(${interpolate(brandLineProgress, [0, 1], [0.93, 1])})`,
             textShadow: `0 0 40px ${COLORS.suffolkGold}25`,
@@ -247,7 +259,7 @@ export const Scene6Close: React.FC<Scene6Props> = ({ school, brandLine }) => {
         >
           {brandLine}
         </div>
-      </AbsoluteFill>
+      </div>
 
       {/* Warm glow behind brand line */}
       {frame >= brandLineStart && (
