@@ -39,7 +39,7 @@ export const COLORS = {
 
   // IMMERSE-specific colors
   immerseBlue: "#1B3C73",
-  celticsGreen: "#007A33",
+  celticsGreen: "#00A84D",  // Brightened for video visibility
   patriotsBlue: "#002244",
   wishBlue: "#29ABE2",
 

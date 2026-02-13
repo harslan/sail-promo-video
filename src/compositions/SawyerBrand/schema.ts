@@ -77,7 +77,7 @@ export const defaultProps: SawyerBrandProps = {
     ],
     experiences: [
       { title: "Gillette Stadium", description: "Sustainability consulting at an NFL venue", immerseLetter: "E", immerseCharacteristic: "Experiential", accentColor: "#1B3C73" },
-      { title: "Boston Celtics", description: "Strategic partnership with an NBA franchise", immerseLetter: "S", immerseCharacteristic: "Synergistic", accentColor: "#007A33" },
+      { title: "Boston Celtics", description: "Strategic partnership with an NBA franchise", immerseLetter: "S", immerseCharacteristic: "Synergistic", accentColor: "#00A84D" },
       { title: "100,000 Real Orders", description: "AI-powered analysis in Prompt AIChemy", immerseLetter: "I", immerseCharacteristic: "Integrative", accentColor: "#4ECDC4" },
       { title: "Make-A-Wish", description: "Service learning with real nonprofit impact", immerseLetter: "E", immerseCharacteristic: "Emotional", accentColor: "#29ABE2" },
       { title: "City of Boston", description: "Tackling wicked problems for the actual city", immerseLetter: "R", immerseCharacteristic: "Relevant", accentColor: "#E85D75" },
