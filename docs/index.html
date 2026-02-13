@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAIL Framework Promo Video | Suffolk University</title>
+    <title>Sawyer Business School | Where Ownership is Built</title>
     <style>
         * {
             margin: 0;
@@ -26,7 +26,7 @@
 
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         h1 {
@@ -39,17 +39,35 @@
         .subtitle {
             font-size: 1.1rem;
             color: #8888A0;
+            font-style: italic;
         }
 
         .video-section {
             margin-bottom: 60px;
         }
 
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
         .video-section h2 {
             font-size: 1.3rem;
             font-weight: 500;
-            margin-bottom: 20px;
             color: #F0EFF4;
+        }
+
+        .new-badge {
+            background: #C4A44E;
+            color: #0B0B14;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .video-container {
@@ -66,13 +84,18 @@
             border: 1px solid #333348;
         }
 
+        .video-card.featured {
+            border-color: #C4A44E40;
+            box-shadow: 0 10px 40px rgba(196, 164, 78, 0.1);
+        }
+
         .video-card.vertical {
             width: 280px;
         }
 
         .video-card.horizontal {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
         }
 
         .video-card video {
@@ -106,27 +129,21 @@
             margin-top: 10px;
         }
 
-        .feedback-section {
-            background: #13131F;
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 40px;
-            border: 1px solid #333348;
+        .divider {
+            height: 1px;
+            background: #333348;
+            margin: 50px 0;
         }
 
-        .feedback-section h2 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #C4A44E;
+        .older-videos-header {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        .feedback-section p {
+        .older-videos-header h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
             color: #8888A0;
-            line-height: 1.6;
-        }
-
-        .feedback-section a {
-            color: #4ECDC4;
         }
 
         footer {
@@ -139,8 +156,12 @@
         }
 
         footer a {
-            color: #C4A44E;
+            color: #4ECDC4;
             text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 600px) {
@@ -158,9 +179,37 @@
 <body>
     <div class="container">
         <header>
-            <h1>SAIL Framework Promo Video</h1>
-            <p class="subtitle">Suffolk University Sawyer Business School | AI Leadership Collaborative</p>
+            <h1>Sawyer Business School</h1>
+            <p class="subtitle">Where ownership is built.</p>
         </header>
+
+        <!-- NEW: Sawyer Brand Video -->
+        <section class="video-section">
+            <div class="section-header">
+                <span class="new-badge">NEW</span>
+                <h2>IMMERSE + SAIL: The Complete Story</h2>
+            </div>
+            <div class="video-container">
+                <div class="video-card horizontal featured">
+                    <video controls preload="metadata">
+                        <source src="sawyer-brand-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-info">
+                        <h3>Two Award-Winning Frameworks. One School.</h3>
+                        <p>1920 × 1080 • 75 seconds</p>
+                        <span class="badge">Brand Video — IMMERSE (2024) + SAIL (2025)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Previous SAIL Videos -->
+        <div class="older-videos-header">
+            <h2>SAIL Framework Videos</h2>
+        </div>
 
         <section class="video-section">
             <h2>Horizontal Version (16:9) — Presentations / Website</h2>
@@ -196,28 +245,10 @@
             </div>
         </section>
 
-        <section class="feedback-section">
-            <h2>Feedback Welcome</h2>
-            <p>
-                This is a draft for review. Please share your feedback on:
-            </p>
-            <ul style="margin: 15px 0 15px 20px; color: #8888A0; line-height: 1.8;">
-                <li>Pacing and timing of each scene</li>
-                <li>Typography and visual clarity</li>
-                <li>Audio levels and music choice</li>
-                <li>Overall emotional impact</li>
-                <li>The "ownership" message clarity</li>
-            </ul>
-            <p>
-                Video source is built with <a href="https://remotion.dev" target="_blank">Remotion</a> —
-                all content is parameterized and can be adjusted.
-            </p>
-        </section>
-
         <footer>
             <p>
-                <a href="https://sites.suffolk.edu/sail/" target="_blank">SAIL Framework</a> •
-                Suffolk University Sawyer Business School •
+                <a href="https://suffolk.edu/business" target="_blank">suffolk.edu/business</a> •
+                Suffolk University •
                 Boston, MA
             </p>
         </footer>
