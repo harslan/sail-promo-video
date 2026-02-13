@@ -29,10 +29,10 @@ export const Scene4Integration: React.FC<Scene4Props> = ({ sail }) => {
   const { fps } = useVideoConfig();
 
   // Timing — Leadership pillar gets more time (it's the climax)
-  const openingEnd = 90; // 3 seconds for SAIL intro
+  const openingEnd = 105; // 3.5 seconds for SAIL intro — let award breathe
   const pillarDuration = 85; // 2.8 seconds for S, A, I
   const leadershipDuration = 110; // 3.7 seconds for L — the ownership moment
-  const pillarStarts = [90, 175, 260, 345]; // Adjusted for variable duration
+  const pillarStarts = [105, 190, 275, 360]; // Adjusted for extended opening
 
   // Opening: SAIL letters + award
   const openingOpacity = interpolate(

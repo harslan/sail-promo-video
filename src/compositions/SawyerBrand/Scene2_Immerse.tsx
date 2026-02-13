@@ -75,18 +75,18 @@ export const Scene2Immerse: React.FC<Scene2Props> = ({ immerse }) => {
     { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: EASE_SMOOTH }
   );
 
-  // Tagline and award fade in
+  // Tagline and award fade in — appear earlier so they have time to land
   const taglineProgress = interpolate(
     frame,
-    [assemblyStart + 40, assemblyStart + 70],
+    [assemblyStart + 30, assemblyStart + 50],
     [0, 1],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
-  // Scene fade out
+  // Scene fade out — delayed to let award breathe (1.5s of full visibility)
   const sceneOpacity = interpolate(
     frame,
-    [assemblyEnd - 15, assemblyEnd],
+    [assemblyEnd - 10, assemblyEnd],
     [1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
