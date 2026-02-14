@@ -13,7 +13,7 @@ import { AudioDesign } from "./audio/AudioDesign";
 /**
  * SawyerBrandVideo - "Where Ownership Is Built"
  *
- * 75-second cinematic brand video combining IMMERSE + SAIL
+ * 90-second cinematic brand video combining IMMERSE + SAIL
  * Two award-winning frameworks. One school.
  */
 export const SawyerBrandVideo: React.FC<SawyerBrandProps> = (props) => {

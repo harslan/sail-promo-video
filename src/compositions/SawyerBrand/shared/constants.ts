@@ -6,18 +6,18 @@ import { Easing } from "remotion";
 export const VIDEO_WIDTH = 1920;
 export const VIDEO_HEIGHT = 1080;
 export const VIDEO_FPS = 30;
-export const TOTAL_DURATION_FRAMES = 2250; // 75 seconds
+export const TOTAL_DURATION_FRAMES = 2700; // 90 seconds
 
 // ============================================================================
 // SCENE TIMING (in frames)
 // ============================================================================
 export const SCENE_TIMING = {
-  scene1: { start: 0, end: 210 },       // 0-7s: The Generic Claim
-  scene2: { start: 210, end: 840 },     // 7-28s: The IMMERSE Reality (21s)
-  scene3: { start: 840, end: 1050 },    // 28-35s: The Pivot (7s)
-  scene4: { start: 1050, end: 1530 },   // 35-51s: SAIL Meets IMMERSE (16s)
-  scene5: { start: 1530, end: 1830 },   // 51-61s: The Thesis (10s)
-  scene6: { start: 1830, end: 2250 },   // 61-75s: The Close (14s)
+  scene1: { start: 0, end: 270 },       // 0-9s: The Generic Claim (+2s)
+  scene2: { start: 270, end: 1020 },    // 9-34s: The IMMERSE Reality (25s, +4s)
+  scene3: { start: 1020, end: 1290 },   // 34-43s: The Pivot (9s, +2s)
+  scene4: { start: 1290, end: 1860 },   // 43-62s: SAIL Meets IMMERSE (19s, +3s)
+  scene5: { start: 1860, end: 2220 },   // 62-74s: The Thesis (12s, +2s)
+  scene6: { start: 2220, end: 2700 },   // 74-90s: The Close (16s, +2s)
 } as const;
 
 // ============================================================================

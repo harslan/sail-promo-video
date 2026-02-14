@@ -21,7 +21,7 @@ type Scene5Props = {
 };
 
 /**
- * Scene 5: THE THESIS (10 seconds / 300 frames)
+ * Scene 5: THE THESIS (12 seconds / 360 frames)
  *
  * Beat 1: Two frameworks side by side
  * Beat 2: The three-beat thesis that lands the argument
@@ -32,13 +32,13 @@ export const Scene5Thesis: React.FC<Scene5Props> = ({ immerse, sail, thesis }) =
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Timing — the thesis is the climax. Each beat must land.
-  const beat1End = 105; // 3.5 seconds for frameworks side by side
-  const beat2Start = 115; // Clean break — frameworks gone, then thesis begins
+  // Timing — the thesis is the climax. Each beat must land with room to breathe.
+  const beat1End = 120; // 4 seconds for frameworks side by side
+  const beat2Start = 130; // Clean break — frameworks gone, then thesis begins
   const line1Start = beat2Start + 5; // "Skills can be automated."
-  const line2Start = line1Start + 40; // 1.3s to let line 1 land
-  const line3Start = line2Start + 40; // 1.3s to let line 2 land
-  const closerStart = line3Start + 50; // 1.7s for "Ownership cannot." — then the closer lands
+  const line2Start = line1Start + 50; // 1.7s to let line 1 land
+  const line3Start = line2Start + 50; // 1.7s to let line 2 land
+  const closerStart = line3Start + 60; // 2s for "Ownership cannot." — THE moment lands
 
   // Beat 1: Two frameworks side by side
   const immerseProgress = spring({
@@ -95,7 +95,7 @@ export const Scene5Thesis: React.FC<Scene5Props> = ({ immerse, sail, thesis }) =
   // Scene fade out — delayed to give closer time to breathe
   const sceneOpacity = interpolate(
     frame,
-    [290, 300],
+    [345, 360],
     [1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );

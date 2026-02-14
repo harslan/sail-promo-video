@@ -12,7 +12,7 @@ import { COLORS, TYPE_SCALE, EASE_SMOOTH } from "./shared/constants";
 const { fontFamily: serifFont } = loadCormorant();
 
 /**
- * Scene 3: THE PIVOT (7 seconds / 210 frames)
+ * Scene 3: THE PIVOT (9 seconds / 270 frames)
  *
  * The turn. Experience alone is not enough.
  * "But experience without a framework is just activity."
@@ -25,11 +25,11 @@ export const Scene3Pivot: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Timing — the pivot needs to breathe (thoughtful pause)
-  const line1Start = 15;
-  const line1End = 85;
-  const line2Start = 110; // 25 frame pause (0.8s) — let it land
-  const fadeOut = 200;
+  // Timing — the pivot needs to breathe (longer pauses)
+  const line1Start = 20;
+  const line1End = 100;
+  const line2Start = 135; // 35 frame pause (1.2s) — let it really land
+  const fadeOut = 255;
 
   // Line 1: "But experience without a framework is just activity."
   const line1Progress = spring({
@@ -54,7 +54,7 @@ export const Scene3Pivot: React.FC = () => {
 
   const line2Opacity = interpolate(
     frame,
-    [line2Start, line2Start + 25, fadeOut, 210],
+    [line2Start, line2Start + 25, fadeOut, 270],
     [0, 1, 1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
@@ -62,7 +62,7 @@ export const Scene3Pivot: React.FC = () => {
   // Subtle vignette that tightens during this scene
   const vignetteIntensity = interpolate(
     frame,
-    [0, 100, 210],
+    [0, 120, 270],
     [0.3, 0.5, 0.4],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );

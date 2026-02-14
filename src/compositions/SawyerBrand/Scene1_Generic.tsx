@@ -12,7 +12,7 @@ import { COLORS, TYPE_SCALE, EASE_SMOOTH } from "./shared/constants";
 const { fontFamily: sansFont } = loadDMSans();
 
 /**
- * Scene 1: THE GENERIC CLAIM (7 seconds / 210 frames)
+ * Scene 1: THE GENERIC CLAIM (9 seconds / 270 frames)
  *
  * Start with what every school says. Let it sit. Let it breathe.
  * "Every business school talks about real-world experience."
@@ -23,12 +23,12 @@ export const Scene1Generic: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Timing — let the words land
-  const line1Start = 25;
-  const line2Start = 55;
-  const holdUntil = 170;
-  const flickerFrame = 175;
-  const fadeStart = 185;
+  // Timing — let the words land, longer hold for impact
+  const line1Start = 30;
+  const line2Start = 70;
+  const holdUntil = 220;
+  const flickerFrame = 230;
+  const fadeStart = 245;
 
   // Line 1: "Every business school talks about"
   const line1Progress = spring({
@@ -51,7 +51,7 @@ export const Scene1Generic: React.FC = () => {
   // Clean fade out
   const fadeOut = interpolate(
     frame,
-    [fadeStart, 210],
+    [fadeStart, 270],
     [1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: EASE_SMOOTH }
   );

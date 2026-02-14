@@ -20,21 +20,22 @@ type Scene2Props = {
 };
 
 /**
- * Scene 2: THE IMMERSE REALITY (21 seconds / 630 frames)
+ * Scene 2: THE IMMERSE REALITY (25 seconds / 750 frames)
  *
- * Fast, energetic montage showing what IMMERSE actually looks like.
+ * Energetic montage showing what IMMERSE actually looks like.
  * This should feel like a movie trailer. Impressive. Alive.
+ * Now with more breathing room for each card.
  */
 export const Scene2Immerse: React.FC<Scene2Props> = ({ immerse }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Timing
-  const openingEnd = 105; // 3.5 seconds — let opening breathe
-  const montageStart = 105;
-  const montageEnd = 540; // 18 seconds of montage
-  const assemblyStart = 540;
-  const assemblyEnd = 630;
+  // Timing — extended for slower pace
+  const openingEnd = 120; // 4 seconds — let opening breathe
+  const montageStart = 120;
+  const montageEnd = 610; // ~16s of montage (cards breathe longer)
+  const assemblyStart = 610;
+  const assemblyEnd = 750; // 4.7s for assembly
 
   // Opening text
   const openingOpacity = interpolate(
@@ -45,8 +46,8 @@ export const Scene2Immerse: React.FC<Scene2Props> = ({ immerse }) => {
   );
 
   // Calculate which experience card is active
-  const cardDuration = 75; // ~2.5 seconds per card — let descriptions breathe
-  const cardOverlap = 15;
+  const cardDuration = 90; // 3 seconds per card — let descriptions breathe
+  const cardOverlap = 20;
   const effectiveCardDuration = cardDuration - cardOverlap;
 
   const getCardProgress = (index: number) => {

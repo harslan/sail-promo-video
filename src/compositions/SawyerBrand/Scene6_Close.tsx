@@ -20,7 +20,7 @@ type Scene6Props = {
 };
 
 /**
- * Scene 6: THE CLOSE (14 seconds / 420 frames)
+ * Scene 6: THE CLOSE (16 seconds / 480 frames)
  *
  * Credentials + CTA + Brand line
  * The final beat. Where ownership is built.
@@ -29,14 +29,14 @@ export const Scene6Close: React.FC<Scene6Props> = ({ school, brandLine }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Timing — starts with a breath after the thesis
-  const breathDuration = 40; // 1.3 seconds of near-silence to let thesis sink in
-  const credentialsStart = breathDuration + 20;
-  const schoolNameStart = breathDuration + 50;
-  const locationStart = breathDuration + 80;
-  const accoladesStart = breathDuration + 110;
-  const urlStart = breathDuration + 180;
-  const brandLineStart = breathDuration + 250;
+  // Timing — starts with a longer breath after the thesis
+  const breathDuration = 50; // 1.7 seconds of near-silence to let thesis sink in
+  const credentialsStart = breathDuration + 25;
+  const schoolNameStart = breathDuration + 60;
+  const locationStart = breathDuration + 95;
+  const accoladesStart = breathDuration + 130;
+  const urlStart = breathDuration + 210;
+  const brandLineStart = breathDuration + 290;
 
   // Animations
   const credentialsProgress = spring({
@@ -88,7 +88,7 @@ export const Scene6Close: React.FC<Scene6Props> = ({ school, brandLine }) => {
 
   const fadeOut = interpolate(
     frame,
-    [400, 420],
+    [460, 480],
     [1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );

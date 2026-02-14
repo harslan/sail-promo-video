@@ -5,11 +5,11 @@ import { SCENE_TIMING } from "../shared/constants";
 /**
  * CINEMATIC AUDIO DESIGN FOR SAWYER BRAND VIDEO
  *
- * 75 seconds of carefully orchestrated sound to match the visual narrative.
+ * 90 seconds of carefully orchestrated sound to match the visual narrative.
  *
  * AUDIO NARRATIVE:
  *
- * Scene 1 (0-7s): THE GENERIC CLAIM
+ * Scene 1 (0-9s): THE GENERIC CLAIM
  *   - Near silence. Sterile. The emptiness IS the design.
  *   - Low rumble builds before glitch
  *   - Glitch: brief digital distortion burst

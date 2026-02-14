@@ -19,7 +19,7 @@ type Scene4Props = {
 };
 
 /**
- * Scene 4: SAIL MEETS IMMERSE (16 seconds / 480 frames)
+ * Scene 4: SAIL MEETS IMMERSE (19 seconds / 570 frames)
  *
  * Show how SAIL competencies are forged inside IMMERSE experiences.
  * This is the integration — the thing no other school has.
@@ -28,11 +28,11 @@ export const Scene4Integration: React.FC<Scene4Props> = ({ sail }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Timing — Leadership pillar gets more time (it's the climax)
-  const openingEnd = 105; // 3.5 seconds for SAIL intro — let award breathe
-  const pillarDuration = 85; // 2.8 seconds for S, A, I
-  const leadershipDuration = 110; // 3.7 seconds for L — the ownership moment
-  const pillarStarts = [105, 190, 275, 360]; // Adjusted for extended opening
+  // Timing — each pillar gets more breathing room
+  const openingEnd = 120; // 4 seconds for SAIL intro — let award breathe
+  const pillarDuration = 100; // 3.3 seconds for S, A, I
+  const leadershipDuration = 130; // 4.3 seconds for L — the ownership moment
+  const pillarStarts = [120, 220, 320, 420]; // Adjusted for slower pace
 
   // Opening: SAIL letters + award
   const openingOpacity = interpolate(
@@ -59,7 +59,7 @@ export const Scene4Integration: React.FC<Scene4Props> = ({ sail }) => {
   // Scene fade out
   const sceneOpacity = interpolate(
     frame,
-    [465, 480],
+    [555, 570],
     [1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
